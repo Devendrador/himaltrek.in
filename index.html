@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HimalTrek.in | Uttarakhand Treks & Adventures</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f5f7fa;color:#172033}
+header{position:sticky;top:0;z-index:99;background:white;box-shadow:0 2px 15px #0002}
+.nav{max-width:1200px;margin:auto;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 18px}
+.logo{font-size:25px;font-weight:900;color:#e11d2e}
+.logo span{color:#172033}
+.nav button,.login{background:#e11d2e;color:white;border:0;padding:12px 20px;border-radius:8px;font-weight:bold;cursor:pointer}
+.hero{
+min-height:560px;
+background:linear-gradient(#0005,#0009),url("hero.jpg") center/cover;
+display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:30px
+}
+.hero h1{font-size:55px;margin-bottom:12px}
+.hero p{font-size:20px;max-width:700px;margin:auto auto 25px}
+.hero a{display:inline-block;background:#e11d2e;color:white;padding:15px 25px;border-radius:8px;text-decoration:none;font-weight:bold}
+.menu{background:white;max-width:1200px;margin:-35px auto 30px;position:relative;border-radius:15px;padding:25px;box-shadow:0 5px 25px #0002}
+.filters{display:flex;gap:10px;flex-wrap:wrap}
+select{padding:13px;border:1px solid #ddd;border-radius:8px;flex:1;min-width:150px}
+.container{max-width:1200px;margin:auto;padding:35px 18px}
+h2{text-align:center;font-size:32px;margin-bottom:25px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px}
+.card{background:white;border-radius:14px;overflow:hidden;box-shadow:0 3px 15px #0001}
+.card img{width:100%;height:210px;object-fit:cover}
+.card-body{padding:18px}
+.card h3{font-size:22px;margin-bottom:8px}
+.tag{display:inline-block;background:#eef6ff;color:#1671c5;padding:6px 10px;border-radius:20px;font-size:13px;margin:4px 3px 10px 0}
+.card button{background:#e11d2e;color:white;border:0;padding:11px 17px;border-radius:7px;cursor:pointer;margin-top:10px}
+.stats{background:#172033;color:white;margin-top:40px}
+.statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));text-align:center;gap:20px}
+.stat strong{display:block;font-size:35px;color:#38bdf8}
+.updates{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.update{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px #0001}
+.update img{width:100%;height:170px;object-fit:cover}
+.update div{padding:16px}
+.faq{max-width:850px;margin:auto}
+details{background:white;margin:10px 0;padding:18px;border-radius:8px;box-shadow:0 2px 8px #0001}
+summary{font-weight:bold;cursor:pointer}
+.contact{background:#172033;color:white;text-align:center}
+.contact a{color:#38bdf8;text-decoration:none}
+footer{background:#0d1320;color:#aaa;text-align:center;padding:30px}
+.modal{display:none;position:fixed;z-index:200;inset:0;background:#0008;align-items:center;justify-content:center;padding:20px}
+.modal-box{background:white;padding:30px;border-radius:15px;width:100%;max-width:400px}
+.modal-box input{width:100%;padding:13px;margin:8px 0;border:1px solid #ddd;border-radius:7px}
+.close{float:right;font-size:25px;cursor:pointer}
+.whatsapp{position:fixed;right:20px;bottom:20px;background:#22c55e;color:white;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:27px;text-decoration:none;z-index:100}
+@media(max-width:600px){
+.hero h1{font-size:38px}.hero{min-height:500px}
+.nav{height:62px}.nav button{padding:9px 13px}
+.menu{margin:0;border-radius:0}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="nav">
+<div class="logo">🏔️ Himal<span>Trek.in</span></div>
+<div>
+<button onclick="openLogin()">Login</button>
+</div>
+</div>
+</header>
+
+<section class="hero">
+<div>
+<h1>HimalTrek.in</h1>
+<p>Uttarakhand, Himachal aur India ke best Himalayan Treks, Camping & Adventures.</p>
+<a href="#treks">Explore Treks</a>
+</div>
+</section>
+
+<section class="menu">
+<h2 style="font-size:24px;margin-bottom:18px">🔽 Choose Your Trek</h2>
+<div class="filters">
+<select>
+<option>🇮🇳 Country: India</option>
+<option>India</option><option>Nepal</option>
+</select>
+<select>
+<option>📍 Region</option>
+<option>Uttarakhand</option>
+<option>Himachal Pradesh</option>
+<option>Kashmir</option>
+<option>Ladakh</option>
+</select>
+<select>
+<option>📅 Month</option>
+<option>January</option><option>February</option><option>March</option>
+<option>April</option><option>May</option><option>June</option>
+<option>July</option><option>August</option><option>September</option>
+<option>October</option><option>November</option><option>December</option>
+</select>
+<select>
+<option>☀️ Season</option>
+<option>Spring</option><option>Summer</option><option>Monsoon</option>
+<option>Autumn</option><option>Winter</option>
+</select>
+<select>
+<option>🥾 Difficulty</option>
+<option>Easy</option><option>Moderate</option>
+<option>Difficult</option><option>Challenging</option>
+</select>
+</div>
+</section>
+
+<section class="container" id="treks">
+<h2>🏔️ Popular Treks</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85">
+<div class="card-body">
+<h3>Kedarkantha Trek</h3>
+<span class="tag">Uttarakhand</span><span class="tag">Winter</span>
+<p>Snow-covered Himalayan peaks, pine forests and beautiful summit views.</p>
+<b>⏱️ 6 Days</b><br>
+<button onclick="enquire('Kedarkantha Trek')">Enquire Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=85">
+<div class="card-body">
+<h3>Kuari Pass Trek</h3>
+<span class="tag">Uttarakhand</span><span class="tag">Moderate</span>
+<p>Experience spectacular Himalayan views and beautiful mountain trails.</p>
+<b>⏱️ 6 Days</b><br>
+<button onclick="enquire('Kuari Pass Trek')">Enquire Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=85">
+<div class="card-body">
+<h3>Dayara Bugyal Trek</h3>
+<span class="tag">Uttarakhand</span><span class="tag">Easy</span>
+<p>Green alpine meadows with amazing Himalayan scenery.</p>
+<b>⏱️ 5 Days</b><br>
+<button onclick="enquire('Dayara Bugyal Trek')">Enquire Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=900&q=85">
+<div class="card-body">
+<h3>Sandakphu Trek</h3>
+<span class="tag">India</span><span class="tag">West Bengal</span>
+<p>One of India's famous Himalayan high-altitude treks.</p>
+<b>⏱️ 7 Days</b><br>
+<button onclick="enquire('Sandakphu Trek')">Enquire Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85">
+<div class="card-body">
+<h3>Hampta Pass Trek</h3>
+<span class="tag">Himachal Pradesh</span><span class="tag">Moderate</span>
+<p>Beautiful valleys, mountains and changing landscapes.</p>
+<b>⏱️ 5 Days</b><br>
+<button onclick="enquire('Hampta Pass Trek')">Enquire Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1486911278844-a81c5267e227?auto=format&fit=crop&w=900&q=85">
+<div class="card-body">
+<h3>Brahmatal Trek</h3>
+<span class="tag">Uttarakhand</span><span class="tag">Winter</span>
+<p>Snow trek with beautiful views of Himalayan peaks.</p>
+<b>⏱️ 6 Days</b><br>
+<button onclick="enquire('Brahmatal Trek')">Enquire Now</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="stats">
+<div class="container">
+<h2 style="color:white">📊 HimalTrek Statistics</h2>
+<div class="statgrid">
+<div class="stat"><strong>25+</strong>Treks</div>
+<div class="stat"><strong>500+</strong>Happy Trekkers</div>
+<div class="stat"><strong>10+</strong>Destinations</div>
+<div class="stat"><strong>24/7</strong>Support</div>
+</div>
+</div>
+</section>
+
+<section class="container">
+<h2>📰 Latest Updates</h2>
+<div class="updates">
+
+<div class="update">
+<img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=85">
+<div><b>Himalayan Trek Update</b><p>Latest trekking season information and mountain adventures.</p></div>
+</div>
+
+<div class="update">
+<img src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=800&q=85">
+<div><b>Winter Trek Season</b><p>Kedarkantha and Brahmatal winter adventures.</p></div>
+</div>
+
+<div class="update">
+<img src="https://images.unsplash.com/photo-1464822759844-d150baec0494?auto=format&fit=crop&w=800&q=85">
+<div><b>Explore Uttarakhand</b><p>Discover beautiful Himalayan destinations.</p></div>
+</div>
+
+</div>
+</section>
+
+<section class="container">
+<h2>❓ Frequently Asked Questions</h2>
+<div class="faq">
+<details><summary>How do I choose the right trek?</summary><p>Choose according to your fitness, experience, season and trek difficulty.</p></details>
+<details><summary>Can a beginner go trekking?</summary><p>Yes. Beginner-friendly treks such as Dayara Bugyal are available.</p></details>
+<details><summary>Can I join a group trek?</summary><p>Yes, group and customized trek options can be arranged.</p></details>
+<details><summary>What should I carry?</summary><p>Warm clothes, trekking shoes, water bottle, medicines and essential personal items.</p></details>
+<details><summary>How can I contact HimalTrek?</summary><p>Call or WhatsApp us on +91 9259627461.</p></details>
+</div>
+</section>
+
+<section class="contact">
+<div class="container">
+<h2 style="color:white">📞 Contact HimalTrek</h2>
+<p>📱 Phone: <a href="tel:+919259627461">+91 9259627461</a></p>
+<p>💬 WhatsApp: <a href="https://wa.me/919259627461">Chat on WhatsApp</a></p>
+<p>📧 Email: <a href="mailto:devendarrawat874@gmail.com">devendarrawat874@gmail.com</a></p>
+<p>📍 Mori / Uttarkashi, Uttarakhand</p>
+</div>
+</section>
+
+<footer>
+<p>🏔️ <b>HimalTrek.in</b></p>
+<p>Uttarakhand • Himachal Pradesh • India</p>
+<p>© 2026 HimalTrek.in — All Rights Reserved.</p>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/919259627461?text=Namaste%20HimalTrek%2C%20mujhe%20trek%20ki%20jankari%20chahiye.">☏</a>
+
+<div class="modal" id="loginModal">
+<div class="modal-box">
+<span class="close" onclick="closeLogin()">×</span>
+<h2>🔐 HimalTrek Login</h2>
+<input type="text" placeholder="Mobile Number / Email">
+<input type="password" placeholder="Password">
+<button class="login" style="width:100%" onclick="alert('Login system ko backend se connect karna hoga.')">Login</button>
+</div>
+</div>
+
+<script>
+function openLogin(){
+document.getElementById("loginModal").style.display="flex";
+}
+function closeLogin(){
+document.getElementById("loginModal").style.display="none";
+}
+function enquire(trek){
+let msg="Namaste HimalTrek! Mujhe "+trek+" ke baare mein jankari chahiye.";
+location.href="https://wa.me/919259627461?text="+encodeURIComponent(msg);
+}
+window.onclick=function(e){
+if(e.target==document.getElementById("loginModal")) closeLogin();
+}
+</script>
+
+</body>
+</html>
