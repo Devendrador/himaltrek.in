@@ -1,136 +1,1244 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="_qI0LfX7hzI2BdKcyi9KfM4DZQnma9qgH0cYpY3yE2E" />
-    <title>HimalTrek - Uttarakhand Trekking & Expeditions</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
-        body { background-color: #0b1320; color: #f0f4f8; line-height: 1.6; }
-        
-        header {
-            background: linear-gradient(rgba(11,19,32,0.65), rgba(11,19,32,0.9)), 
-                        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-            padding: 80px 20px 60px;
-            text-align: center;
-        }
-        header h1 { font-size: 2.8rem; color: #38bdf8; letter-spacing: 1px; margin-bottom: 10px; }
-        header p { font-size: 1.15rem; color: #cbd5e1; max-width: 600px; margin: 0 auto 25px; }
-        
-        .cta-btn {
-            display: inline-block;
-            background: #22c55e;
-            color: #fff;
-            padding: 14px 28px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(34,197,94,0.4);
-            transition: 0.3s;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="HimalTrek.in - Explore trekking adventures across Uttarakhand and India.">
+<title>HimalTrek.in | India Trekking Adventures</title>
+<style>
 
-        .container { max-width: 1050px; margin: 0 auto; padding: 40px 20px; }
-        h2 { font-size: 2rem; color: #38bdf8; text-align: center; margin-bottom: 35px; }
+:root {
+  --bg:#071710;
+  --panel:#10271e;
+  --panel2:#17372a;
+  --accent:#b9f27c;
+  --text:#f5f8f1;
+  --muted:#c0d0c3;
+  --line:#315342;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  font-family:system-ui,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
+header {
+  position:sticky;
+  top:0;
+  z-index:10;
+  padding:14px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  background:#071710;
+  border-bottom:1px solid var(--line);
+}
+.logo { color:var(--accent); font-size:26px; font-weight:850; }
+nav { display:flex; flex-wrap:wrap; gap:8px; }
+nav a { color:var(--text); text-decoration:none; padding:7px 10px; }
+.hero {
+  min-height:420px;
+  padding:70px 6%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  background:
+    linear-gradient(90deg,rgba(3,17,11,.92),rgba(3,17,11,.3)),
+    url('himaltrek-design.png') center/cover;
+}
+.hero h1 { max-width:800px; font-size:clamp(36px,7vw,72px); line-height:1.1; }
+.hero p { max-width:650px; color:#e3f6cf; }
+.btn {
+  display:inline-block;
+  background:var(--accent);
+  color:#122313;
+  padding:12px 18px;
+  border:0;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:800;
+  cursor:pointer;
+  margin:6px;
+}
+section { padding:45px 5%; scroll-margin-top:80px; }
+h2 { color:var(--accent); font-size:clamp(26px,4vw,38px); }
+.filters { display:flex; flex-wrap:wrap; gap:10px; margin:20px 0; }
+input,select,textarea {
+  padding:12px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:var(--panel);
+  color:var(--text);
+  max-width:100%;
+  font:inherit;
+}
+.filters input,.filters select { flex:1; min-width:140px; }
+.grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+.card img { width:100%; height:210px; object-fit:cover; display:block; }
+.card-content { padding:18px; }
+.card h3 { color:#e3f6cf; }
+.card p { color:var(--muted); }
+.card .trek-price { color:var(--accent); font-weight:850; }
+.gallery { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; margin:24px 0; }
+.gallery img { width:100%; height:230px; object-fit:cover; border-radius:16px; display:block; cursor:zoom-in; transition:transform .25s ease,box-shadow .25s ease; box-shadow:0 6px 20px #0003; }
+.gallery img:hover { transform:scale(1.025); box-shadow:0 12px 28px #0005; }
+#gallery h2 { text-align:center; font-size:clamp(26px,4vw,40px); }
+#gallery > p { line-height:1.8; }
+@media(max-width:850px) { .gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; } .gallery img { height:190px; } }
+@media(max-width:420px) { .gallery { gap:9px; } .gallery img { height:145px; border-radius:12px; } }
+form { max-width:650px; margin:24px auto; display:grid; gap:13px; }
+#about { background:var(--panel); }
+footer { text-align:center; background:#04100a; padding:28px 5%; }
+@media(max-width:850px) {
+  .grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .gallery { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:560px) {
+  header { flex-direction:column; align-items:flex-start; }
+  .grid { grid-template-columns:1fr; }
+  .hero { min-height:350px; padding:45px 5%; }
+  section { padding:32px 5%; }
+}
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-        .card {
-            background: #152238;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-        .card img { width: 100%; height: 210px; object-fit: cover; display: block; }
-        .card-content { padding: 20px; }
-        .card-content h3 { font-size: 1.3rem; margin-bottom: 8px; color: #fff; }
-        .card-content p { font-size: 0.95rem; color: #94a3b8; margin-bottom: 15px; }
-        .price { font-size: 1.1rem; font-weight: bold; color: #38bdf8; }
 
-        .features { background: #0f172a; padding: 40px 20px; border-radius: 14px; margin-top: 40px; }
-        .feature-list { display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px; text-align: center; }
-        .feature-item { flex: 1 1 200px; }
-        .feature-item span { font-size: 2rem; display: block; margin-bottom: 8px; }
+/* HimalTrek modern forest-green homepage */
+:root {
+  --bg: #f4f8f2;
+  --panel: #ffffff;
+  --panel2: #e7f1e5;
+  --accent: #247447;
+  --text: #183527;
+  --muted: #5c6f62;
+  --line: #d7e5d8;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+header {
+  background: rgba(255,255,255,.97);
+  box-shadow: 0 3px 18px rgba(20,55,35,.08);
+  border-bottom: 1px solid var(--line);
+}
+.logo {
+  color: #216b42;
+  letter-spacing: -.5px;
+}
+nav a {
+  color: #244b35;
+  border-radius: 9px;
+  font-weight: 650;
+  transition: background .2s, color .2s;
+}
+nav a:hover {
+  background: #e7f1e5;
+  color: #176638;
+}
+.hero {
+  min-height: 490px;
+  padding: 76px 7%;
+  background:
+    linear-gradient(90deg,rgba(5,28,17,.82),rgba(5,28,17,.22)),
+    url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=85')
+    center/cover;
+  border-radius: 0 0 26px 26px;
+}
+.hero > p:first-child {
+  color: #d9f6b8;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+.hero h1 {
+  color: #fff;
+  max-width: 760px;
+  margin: 8px 0 12px;
+  text-shadow: 0 3px 16px rgba(0,0,0,.25);
+}
+.hero p {
+  color: #f0f7ed;
+  font-size: 17px;
+}
+.btn {
+  background: #247447;
+  color: #fff;
+  border-radius: 10px;
+  padding: 12px 20px;
+  box-shadow: 0 5px 14px rgba(15,70,35,.13);
+  transition: transform .2s, background .2s;
+}
+.btn:hover {
+  background: #185b35;
+  transform: translateY(-2px);
+}
+section {
+  padding: 52px 5%;
+}
+h2 {
+  color: #205f3b;
+  text-align: center;
+  margin: 0 0 12px;
+}
+#treks > p, #gallery > p {
+  color: var(--muted);
+}
+.filters {
+  background: #fff;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 5px 22px rgba(30,70,40,.06);
+}
+input, select, textarea {
+  background: #fff;
+  color: #183527;
+  border-color: #d0dfd2;
+}
+.grid {
+  gap: 22px;
+  margin-top: 22px;
+}
+.card {
+  background: #fff;
+  border: 1px solid #dce7dc;
+  border-radius: 18px;
+  box-shadow: 0 7px 24px rgba(23,65,38,.07);
+  transition: transform .2s, box-shadow .2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 13px 30px rgba(23,65,38,.13);
+}
+.card img {
+  height: 225px;
+}
+.card-content {
+  padding: 20px;
+}
+.card h3 {
+  color: #205f3b;
+  margin-top: 0;
+}
+.card p {
+  color: #5c6f62;
+}
+.card .trek-price {
+  color: #247447;
+}
+#gallery img {
+  box-shadow: 0 5px 16px rgba(20,55,35,.10);
+}
+#about {
+  background: #eaf3e7;
+  color: #183527;
+}
+footer {
+  background: #143d29;
+  color: #f5f8f1;
+}
+@media(max-width:560px) {
+  header {
+    padding: 13px 5%;
+  }
+  .logo {
+    font-size: 24px;
+  }
+  nav {
+    gap: 3px;
+  }
+  nav a {
+    padding: 6px 8px;
+    font-size: 14px;
+  }
+  .hero {
+    min-height: 390px;
+    padding: 42px 5%;
+    border-radius: 0 0 18px 18px;
+  }
+  .hero h1 {
+    font-size: clamp(35px, 10vw, 48px);
+  }
+  .card img {
+    height: 220px;
+  }
+}
 
-        footer {
-            background: #080d16;
-            text-align: center;
-            padding: 35px 20px;
-            margin-top: 50px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        footer p { color: #64748b; font-size: 0.95rem; margin-bottom: 10px; }
-        .contact-info { font-size: 1.1rem; color: #38bdf8; font-weight: bold; }
-    </style>
+</style>
+
+<style>@media(max-width:1000px){body{padding-bottom:76px}.ht-mobile-bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:9999;display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border-top:1px solid #d7e5d8;padding:8px 3px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -3px 12px #0001}.ht-mobile-bottom-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-decoration:none;color:#526779;font-size:14px;font-weight:700;line-height:1.4;min-height:60px}.ht-mobile-bottom-nav a:first-child{color:#247447}.ht-mobile-bottom-nav span{font-size:27px}}@media(min-width:1001px){.ht-mobile-bottom-nav{display:none}}</style>
 </head>
-<body>
+<body id="top">
 
-    <header>
-        <h1>HimalTrek</h1>
-        <p>Uttarakhand ke Himalayan Treks, Camping aur Guided Expeditions ke liye aapka bharosemand saathi.</p>
-        <a href="https://wa.me/919259627461?text=Namaste!%20Mujhe%20HimalTrek%20ke%20bare%20me%20jankari%20chahiye." class="cta-btn">WhatsApp Par Enquiry Karein</a>
-    </header>
+<div style="background: #ffffff; padding: 25px; margin: 15px; border-radius: 16px; color: #2d3748; border: 3px solid #247447; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+  <h2 style="color: #247447; text-align: center; margin-bottom: 15px; font-size: 22px;">🏔️ उत्तराखंड और हिमाचल प्रदेश के सभी ट्रेक्स</h2>
 
-    <div class="container">
-        <h2>Popular Treks</h2>
-        <div class="grid">
-            
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=80" alt="Kedarkantha Trek">
-                <div class="card-content">
-                    <h3>Kedarkantha Trek</h3>
-                    <p>Barf se dhaki chotiyan, pine ke jungle aur 360° Himalayan view.</p>
-                    <div class="price">4 Din / 3 Raatein • Best Winter Trek</div>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=700&q=80" alt="Bali Pass Trek">
-                <div class="card-content">
-                    <h3>Bali Pass Trek</h3>
-                    <p>Ruinsara Tal aur Yamunotri ko jodne wala alpine pass.</p>
-                    <div class="price">7 Din / 6 Raatein • Advanced Trek</div>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=700&q=80" alt="Alpine Camping">
-                <div class="card-content">
-                    <h3>Alpine Camping & Guiding</h3>
-                    <p>High-quality 4-season tents, garam pahadi khana aur local certified guide support.</p>
-                    <div class="price">Customized Group Packages</div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="features">
-            <h2 style="font-size: 1.6rem; margin-bottom: 25px;">Kyun Chunein HimalTrek?</h2>
-            <div class="feature-list">
-                <div class="feature-item">
-                    <span>🏔️</span>
-                    <strong>Local Guide</strong>
-                    <p style="font-size:0.85rem; color:#94a3b8;">Pahadon ka barson ka anubhav</p>
-                </div>
-                <div class="feature-item">
-                    <span>⛺</span>
-                    <strong>Premium Gear</strong>
-                    <p style="font-size:0.85rem; color:#94a3b8;">Warm sleeping bags & mazboot tents</p>
-                </div>
-                <div class="feature-item">
-                    <span>🛡️</span>
-                    <strong>Safety First</strong>
-                    <p style="font-size:0.85rem; color:#94a3b8;">Proper medical & safety support</p>
-                </div>
-            </div>
-        </div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div>
+      <h3 style="color: #205f3b; font-size: 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px;">उत्तराखंड के ट्रेक</h3>
+      <p style="font-size: 13px; line-height: 1.6;">
+        1. Kedarkantha Trek<br>
+        2. Brahmatal Trek<br>
+        3. Har Ki Dun Trek<br>
+        4. Bali Pass Trek<br>
+        5. Rupin Pass Trek<br>
+        6. Auden's Col Trek<br>
+        7. Pindari Glacier Trek<br>
+        8. Kafni Glacier Trek<br>
+        9. Satopanth Lake Trek<br>
+        10. Dodital–Darwa Pass<br>
+        11. Pangarchulla Peak<br>
+        12. Kartik Swami Trek<br>
+        13. Gaumukh–Tapovan
+      </p>
     </div>
 
-    <footer>
-        <p>HimalTrek • Mori / Uttarkashi, Uttarakhand</p>
-        <p class="contact-info">Call / WhatsApp: +91 9259627461</p>
-        <p style="margin-top: 15px; font-size: 0.8rem;">© 2026 HimalTrek.in - All Rights Reserved.</p>
-    </footer>
+    <div>
+      <h3 style="color: #205f3b; font-size: 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px;">हिमाचल प्रदेश के ट्रेक</h3>
+      <p style="font-size: 13px; line-height: 1.6;">
+        1. Triund Trek<br>
+        2. Hampta Pass Trek<br>
+        3. Bhrigu Lake Trek<br>
+        4. Beas Kund Trek<br>
+        5. Kheerganga Trek<br>
+        6. Prashar Lake Trek<br>
+        7. Kareri Lake Trek<br>
+        8. Indrahar Pass Trek<br>
+        9. Pin Parvati Pass<br>
+        10. Chandrakhani Pass<br>
+        11. Sar Pass Trek<br>
+        12. Tosh Valley Trek<br>
+        13. Deo Tibba / Chandratal
+      </p>
+    </div>
+  </div>
 
+  <div style="text-align: center; margin-top: 20px;">
+    <a href="https://wa.me/919259627461?text=नमस्ते,%20मुझे%20ट्रेक%20पैकेज%20की%20जानकारी%20चाहिए।" target="_blank" style="background: #25d366; color: #fff; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 15px;">💬 WhatsApp पर सभी पैकेज पूछें</a>
+  </div>
+</div>
+
+<header>
+<div class="logo">🏔️ HimalTrek.in</div>
+<div id="google_translate_element" style="margin:10px auto;padding:8px;text-align:center;background:#fff;border-radius:10px;"></div>
+<nav>
+<a href="#treks">Treks</a>
+<a href="#gallery">Photos</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<div class="hero">
+<p>EXPLORE • DISCOVER • ADVENTURE</p>
+<h1>Discover the Himalayas</h1>
+<p>उत्तराखंड से पूरे भारत तक अपने अगले ट्रेक की खोज करें।</p>
+<a class="btn" href="#treks">Explore Treks</a>
+<a class="btn" href="https://wa.me/919259627461">WhatsApp Us</a>
+</div>
+
+<section id="treks">
+<h2>Explore Trekking in India</h2>
+<p style="text-align:center">अपना ट्रेक खोजें और पैकेज की जानकारी पूछें।</p>
+<div class="filters">
+<input id="search" placeholder="ट्रेक या राज्य खोजें">
+<select id="region"><option value="">सभी राज्य</option></select>
+<select id="difficulty">
+<option value="">सभी कठिनाई स्तर</option>
+<option>आसान</option><option>मध्यम</option><option>कठिन</option>
+</select>
+</div>
+<div class="grid" id="trekGrid"></div>
+</section>
+
+<section id="gallery">
+<h2>HimalTrek Photo Gallery</h2>
+<p style="text-align:center">पहाड़ों और प्राकृतिक नज़ारों की तस्वीरें।</p>
+<div class="gallery">
+<img loading="lazy" src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=700&q=80" alt="Mountain panorama">
+<img loading="lazy" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=700&q=80" alt="Mountain landscape">
+<img loading="lazy" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=700&q=80" alt="Mountain lake">
+<img loading="lazy" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=700&q=80" alt="Mountains at night">
+<img loading="lazy" src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=700&q=80" alt="Mountain trail">
+<img loading="lazy" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=80" alt="Nature scenery">
+<img loading="lazy" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=700&q=80" alt="Forest">
+<img loading="lazy" src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=700&q=80" alt="Green forest">
+
+
+<style>
+/* HIMALTREK_GALLERY_NAMED_CARDS */
+#gallery .gallery .ht-gallery-card{position:relative;overflow:hidden;border-radius:16px;background:#10271e;border:1px solid #365342;box-shadow:0 8px 22px #0004}
+#gallery .gallery .ht-gallery-card img{width:100%;height:230px;display:block;object-fit:cover;border-radius:0;cursor:zoom-in}
+#gallery .gallery .ht-gallery-name{padding:12px 10px;color:#e3f6cf;font-weight:800;font-size:15px;text-align:center}
+@media(max-width:560px){#gallery .gallery .ht-gallery-card img{height:155px}#gallery .gallery .ht-gallery-name{font-size:13px;padding:10px 5px}}
+</style>
+<!-- HIMALTREK_GALLERY_NAMED_CARDS -->
+<div class="ht-gallery-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80" alt="Kedarkantha Trek"><div class="ht-gallery-name">Kedarkantha Trek</div></div>
+<div class="ht-gallery-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=80" alt="Dayara Bugyal Trek"><div class="ht-gallery-name">Dayara Bugyal Trek</div></div>
+<div class="ht-gallery-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80" alt="Har Ki Dun Trek"><div class="ht-gallery-name">Har Ki Dun Trek</div></div>
+<div class="ht-gallery-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80" alt="Brahmatal Trek"><div class="ht-gallery-name">Brahmatal Trek</div></div>
+<div class="ht-gallery-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=900&q=80" alt="Kuari Pass Trek"><div class="ht-gallery-name">Kuari Pass Trek</div></div>
+<div class="ht-gallery-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80" alt="Nag Tibba Trek"><div class="ht-gallery-name">Nag Tibba Trek</div></div>
+<div class="ht-gallery-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80" alt="Valley of Flowers Trek"><div class="ht-gallery-name">Valley of Flowers Trek</div></div>
+<div class="ht-gallery-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80" alt="Chopta–Chandrashila Trek"><div class="ht-gallery-name">Chopta–Chandrashila Trek</div></div>
+</div>
+<p class="small">ये उदाहरण तस्वीरें हैं। अपनी वास्तविक ट्रेकिंग तस्वीरें उपलब्ध होने पर उनसे बदलें।</p>
+</section>
+
+<section id="about">
+<h2>About HimalTrek</h2>
+<p>HimalTrek.in भारत के खूबसूरत पहाड़ी रास्तों और ट्रेकिंग स्थलों की जानकारी खोजने के लिए बनाया जा रहा प्लेटफ़ॉर्म है। बुकिंग से पहले उपलब्धता, गाइड, परमिट, मौसम और सुरक्षा की पुष्टि करें।</p>
+</section>
+
+<section id="himal-auth">
+<h2>HimalTrek Account</h2>
+<form id="himalLoginForm">
+<input id="himalEmail" type="email" placeholder="Email address" required>
+<input id="himalPassword" type="password" placeholder="Password (minimum 6 characters)" minlength="6" required>
+<button class="btn" type="submit">Login</button>
+<button class="btn" type="button" id="himalSignupBtn">Create Account</button>
+<button class="btn" type="button" id="himalLogoutBtn" hidden>Logout</button>
+<p id="himalAuthMessage" role="status">Login या नया account बनाएँ।</p>
+</form>
+</section>
+<section id="contact">
+<h2>Contact & Trek Enquiry</h2>
+<form id="booking">
+<input name="name" placeholder="आपका नाम" required>
+<input name="phone" type="tel" placeholder="मोबाइल नंबर" required>
+<select name="trek" id="bookingTrek" required><option value="">ट्रेक चुनें</option></select>
+<input name="date" type="date" required>
+<input name="people" type="number" min="1" max="30" value="1" required>
+<textarea name="message" placeholder="अपना सवाल लिखें"></textarea>
+<button class="btn" type="submit">WhatsApp पर पूछें</button>
+</form>
+<p style="text-align:center">
+<a class="btn" href="tel:9259627461">Call Us</a>
+<a class="btn" href="mailto:devendarrawat874@gmail.com">Email Us</a>
+</p>
+<p style="text-align:center; margin:28px 0;">
+<a href="https://www.instagram.com/himaltrek.in/" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; justify-content:center; gap:12px; padding:18px 34px; background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045); color:white; font-size:24px; font-weight:800; text-decoration:none; border-radius:18px; box-shadow:0 8px 24px #0005; min-width:230px;"><div style="margin:24px auto;padding:22px;max-width:600px;background:#10271e;color:white;border-radius:18px;line-height:1.9"><h3>📍 Contact HimalTrek.in</h3><p>📍 Uttarkashi, Mori, Pokhari, Dehradun, Uttarakhand, India</p><p>📞 <a href="tel:9259627461">9259627461</a></p><p>✉️ <a href="mailto:devendarrawat874@gmail.com">devendarrawat874@gmail.com</a></p></div>📸 Follow Us on Instagram</a>
+<br><br>
+<a href="https://www.facebook.com/share/1BsWd3j31Z/" target="_blank" rel="noopener noreferrer">Facebook</a> |
+<a href="https://www.facebook.com/share/1BsWd3j31Z/" target="_blank">Facebook</a>
+</p>
+</section>
+
+<footer>
+<strong>HimalTrek.in</strong>
+<p>Explore India • Respect Nature • Trek Responsibly</p>
+<p>© 2026 HimalTrek.in</p>
+<p class="small">यह वेबसाइट जानकारी और पूछताछ के लिए है। कोई बुकिंग तब तक पक्की नहीं होगी जब तक कंपनी पुष्टि न करे।</p>
+</footer>
+
+<script>
+const treks = [
+
+["चारधाम यात्रा","उत्तराखंड","आसान","6–10 दिन","चारों धाम — सड़क मार्ग या हेलीकॉप्टर पैकेज","photo-1501785888041-af3ef285b470"],
+
+
+["Kedarkantha","उत्तराखंड","मध्यम","5–6 दिन","सर्दियों का लोकप्रिय ट्रेक","https://commons.wikimedia.org/wiki/Special:FilePath/Kedarkantha%20Peak.jpg"],
+["Dayara Bugyal","उत्तराखंड","आसान","4–6 दिन","खुले घास के मैदान","photo-1470770841072-f978cf4d019e"],
+["Kuari Pass","उत्तराखंड","मध्यम","5–6 दिन","हिमालय के नज़ारे","photo-1454496522488-7a8e488e8606"],
+["Har Ki Dun","उत्तराखंड","मध्यम","6–7 दिन","घाटी और पहाड़ी गाँव","photo-1501785888041-af3ef285b470"],
+["Brahmatal","उत्तराखंड","मध्यम","5–6 दिन","सर्दियों का ट्रेक","photo-1519681393784-d120267933ba"],
+["Nag Tibba","उत्तराखंड","आसान","2 दिन","शुरुआती ट्रेकर्स के लिए","photo-1506905925346-21bda4d32df4"],
+["Chopta–Chandrashila","उत्तराखंड","मध्यम","3–4 दिन","पहाड़ी रास्ते","photo-1464278533981-50106e6176b1"],
+["Valley of Flowers","उत्तराखंड","मध्यम","5–6 दिन","फूलों की घाटी","photo-1470770841072-f978cf4d019e"],
+["Pindari Glacier","उत्तराखंड","मध्यम","6–8 दिन","ग्लेशियर क्षेत्र","photo-1464822759023-fed622ff2c3b"],
+["Gaumukh–Tapovan","उत्तराखंड","कठिन","6–8 दिन","ऊँचाई वाला ट्रेक","photo-1454496522488-7a8e488e8606"],
+["Triund","हिमाचल प्रदेश","आसान","1–2 दिन","पहाड़ों का नज़ारा","photo-1506905925346-21bda4d32df4"],
+["Hampta Pass","हिमाचल प्रदेश","मध्यम","4–6 दिन","घाटी और पहाड़ी दर्रे","photo-1464278533981-50106e6176b1"],
+["Bhrigu Lake","हिमाचल प्रदेश","मध्यम","3–4 दिन","अल्पाइन झील","photo-1501785888041-af3ef285b470"],
+["Beas Kund","हिमाचल प्रदेश","मध्यम","3–4 दिन","पहाड़ी झील","photo-1519681393784-d120267933ba"],
+["Kheerganga","हिमाचल प्रदेश","मध्यम","2 दिन","जंगल और पहाड़ी रास्ता","photo-1441974231531-c6227db76b6e"],
+["Indrahar Pass","हिमाचल प्रदेश","कठिन","4–6 दिन","ऊँचा पर्वतीय दर्रा","photo-1464822759023-fed622ff2c3b"],
+["Kashmir Great Lakes","जम्मू-कश्मीर","कठिन","7–9 दिन","झीलों का ट्रेक","photo-1501785888041-af3ef285b470"],
+["Tarsar–Marsar","जम्मू-कश्मीर","मध्यम","6–7 दिन","अल्पाइन झीलें","photo-1470770841072-f978cf4d019e"],
+["Markha Valley","लद्दाख","मध्यम","5–8 दिन","लद्दाख की घाटी","photo-1454496522488-7a8e488e8606"],
+["Sandakphu–Phalut","पश्चिम बंगाल","मध्यम","5–7 दिन","पहाड़ी रिज ट्रेक","photo-1519681393784-d120267933ba"],
+["Goechala","सिक्किम","कठिन","8–11 दिन","ऊँचाई वाला ट्रेक","photo-1464822759023-fed622ff2c3b"],
+["Dzongri","सिक्किम","मध्यम","5–7 दिन","हिमालयी दृश्य","photo-1454496522488-7a8e488e8606"],
+["Kudremukh","कर्नाटक","मध्यम","1–2 दिन","हरे पहाड़","photo-1441974231531-c6227db76b6e"],
+["Tadiandamol","कर्नाटक","आसान","1–2 दिन","जंगल और पहाड़","photo-1511497584788-876760111969"],
+["Rajmachi","महाराष्ट्र","आसान","1–2 दिन","किला और पहाड़ी रास्ते","photo-1470770841072-f978cf4d019e"],
+["Harishchandragad","महाराष्ट्र","मध्यम","1–2 दिन","किले का ट्रेक","photo-1464278533981-50106e6176b1"],
+["Chembra Peak","केरल","मध्यम","1 दिन","हरी पहाड़ियाँ","photo-1506905925346-21bda4d32df4"],
+["Meghalaya Nature Trails","मेघालय","मध्यम","1–3 दिन","जंगल और प्राकृतिक रास्ते","photo-1441974231531-c6227db76b6e"],
+["उत्तराखंड Demo Route 01","उत्तराखंड","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["उत्तराखंड Demo Route 02","उत्तराखंड","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["उत्तराखंड Demo Route 03","उत्तराखंड","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["उत्तराखंड Demo Route 04","उत्तराखंड","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["उत्तराखंड Demo Route 05","उत्तराखंड","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["उत्तराखंड Demo Route 06","उत्तराखंड","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["उत्तराखंड Demo Route 07","उत्तराखंड","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["उत्तराखंड Demo Route 08","उत्तराखंड","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["उत्तराखंड Demo Route 09","उत्तराखंड","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["उत्तराखंड Demo Route 10","उत्तराखंड","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["उत्तराखंड Demo Route 11","उत्तराखंड","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["उत्तराखंड Demo Route 12","उत्तराखंड","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["उत्तराखंड Demo Route 13","उत्तराखंड","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["उत्तराखंड Demo Route 14","उत्तराखंड","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["उत्तराखंड Demo Route 15","उत्तराखंड","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["उत्तराखंड Demo Route 16","उत्तराखंड","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["उत्तराखंड Demo Route 17","उत्तराखंड","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["उत्तराखंड Demo Route 18","उत्तराखंड","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["उत्तराखंड Demo Route 19","उत्तराखंड","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["उत्तराखंड Demo Route 20","उत्तराखंड","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["उत्तराखंड Demo Route 21","उत्तराखंड","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["उत्तराखंड Demo Route 22","उत्तराखंड","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["उत्तराखंड Demo Route 23","उत्तराखंड","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["उत्तराखंड Demo Route 24","उत्तराखंड","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["उत्तराखंड Demo Route 25","उत्तराखंड","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["उत्तराखंड Demo Route 26","उत्तराखंड","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["उत्तराखंड Demo Route 27","उत्तराखंड","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["उत्तराखंड Demo Route 28","उत्तराखंड","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["उत्तराखंड Demo Route 29","उत्तराखंड","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["उत्तराखंड Demo Route 30","उत्तराखंड","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["उत्तराखंड Demo Route 31","उत्तराखंड","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["उत्तराखंड Demo Route 32","उत्तराखंड","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["उत्तराखंड Demo Route 33","उत्तराखंड","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["उत्तराखंड Demo Route 34","उत्तराखंड","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["उत्तराखंड Demo Route 35","उत्तराखंड","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["उत्तराखंड Demo Route 36","उत्तराखंड","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["उत्तराखंड Demo Route 37","उत्तराखंड","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["उत्तराखंड Demo Route 38","उत्तराखंड","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["उत्तराखंड Demo Route 39","उत्तराखंड","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["हिमाचल प्रदेश Demo Route 01","हिमाचल प्रदेश","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["हिमाचल प्रदेश Demo Route 02","हिमाचल प्रदेश","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["हिमाचल प्रदेश Demo Route 03","हिमाचल प्रदेश","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["हिमाचल प्रदेश Demo Route 04","हिमाचल प्रदेश","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["हिमाचल प्रदेश Demo Route 05","हिमाचल प्रदेश","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["हिमाचल प्रदेश Demo Route 06","हिमाचल प्रदेश","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["हिमाचल प्रदेश Demo Route 07","हिमाचल प्रदेश","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["हिमाचल प्रदेश Demo Route 08","हिमाचल प्रदेश","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["हिमाचल प्रदेश Demo Route 09","हिमाचल प्रदेश","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["हिमाचल प्रदेश Demo Route 10","हिमाचल प्रदेश","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["हिमाचल प्रदेश Demo Route 11","हिमाचल प्रदेश","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["हिमाचल प्रदेश Demo Route 12","हिमाचल प्रदेश","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["हिमाचल प्रदेश Demo Route 13","हिमाचल प्रदेश","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["हिमाचल प्रदेश Demo Route 14","हिमाचल प्रदेश","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["हिमाचल प्रदेश Demo Route 15","हिमाचल प्रदेश","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["हिमाचल प्रदेश Demo Route 16","हिमाचल प्रदेश","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["हिमाचल प्रदेश Demo Route 17","हिमाचल प्रदेश","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["हिमाचल प्रदेश Demo Route 18","हिमाचल प्रदेश","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["हिमाचल प्रदेश Demo Route 19","हिमाचल प्रदेश","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["हिमाचल प्रदेश Demo Route 20","हिमाचल प्रदेश","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["हिमाचल प्रदेश Demo Route 21","हिमाचल प्रदेश","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["हिमाचल प्रदेश Demo Route 22","हिमाचल प्रदेश","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["हिमाचल प्रदेश Demo Route 23","हिमाचल प्रदेश","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["हिमाचल प्रदेश Demo Route 24","हिमाचल प्रदेश","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["हिमाचल प्रदेश Demo Route 25","हिमाचल प्रदेश","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["हिमाचल प्रदेश Demo Route 26","हिमाचल प्रदेश","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["हिमाचल प्रदेश Demo Route 27","हिमाचल प्रदेश","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["हिमाचल प्रदेश Demo Route 28","हिमाचल प्रदेश","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["हिमाचल प्रदेश Demo Route 29","हिमाचल प्रदेश","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["हिमाचल प्रदेश Demo Route 30","हिमाचल प्रदेश","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["हिमाचल प्रदेश Demo Route 31","हिमाचल प्रदेश","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["हिमाचल प्रदेश Demo Route 32","हिमाचल प्रदेश","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["हिमाचल प्रदेश Demo Route 33","हिमाचल प्रदेश","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["हिमाचल प्रदेश Demo Route 34","हिमाचल प्रदेश","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["हिमाचल प्रदेश Demo Route 35","हिमाचल प्रदेश","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["हिमाचल प्रदेश Demo Route 36","हिमाचल प्रदेश","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["हिमाचल प्रदेश Demo Route 37","हिमाचल प्रदेश","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["हिमाचल प्रदेश Demo Route 38","हिमाचल प्रदेश","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["हिमाचल प्रदेश Demo Route 39","हिमाचल प्रदेश","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["जम्मू-कश्मीर Demo Route 01","जम्मू-कश्मीर","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["जम्मू-कश्मीर Demo Route 02","जम्मू-कश्मीर","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["जम्मू-कश्मीर Demo Route 03","जम्मू-कश्मीर","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["जम्मू-कश्मीर Demo Route 04","जम्मू-कश्मीर","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["जम्मू-कश्मीर Demo Route 05","जम्मू-कश्मीर","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["जम्मू-कश्मीर Demo Route 06","जम्मू-कश्मीर","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["जम्मू-कश्मीर Demo Route 07","जम्मू-कश्मीर","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["जम्मू-कश्मीर Demo Route 08","जम्मू-कश्मीर","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["जम्मू-कश्मीर Demo Route 09","जम्मू-कश्मीर","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["जम्मू-कश्मीर Demo Route 10","जम्मू-कश्मीर","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["जम्मू-कश्मीर Demo Route 11","जम्मू-कश्मीर","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["जम्मू-कश्मीर Demo Route 12","जम्मू-कश्मीर","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["जम्मू-कश्मीर Demo Route 13","जम्मू-कश्मीर","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["जम्मू-कश्मीर Demo Route 14","जम्मू-कश्मीर","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["जम्मू-कश्मीर Demo Route 15","जम्मू-कश्मीर","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["जम्मू-कश्मीर Demo Route 16","जम्मू-कश्मीर","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["जम्मू-कश्मीर Demo Route 17","जम्मू-कश्मीर","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["जम्मू-कश्मीर Demo Route 18","जम्मू-कश्मीर","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["जम्मू-कश्मीर Demo Route 19","जम्मू-कश्मीर","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["जम्मू-कश्मीर Demo Route 20","जम्मू-कश्मीर","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["जम्मू-कश्मीर Demo Route 21","जम्मू-कश्मीर","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["जम्मू-कश्मीर Demo Route 22","जम्मू-कश्मीर","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["जम्मू-कश्मीर Demo Route 23","जम्मू-कश्मीर","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["जम्मू-कश्मीर Demo Route 24","जम्मू-कश्मीर","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["जम्मू-कश्मीर Demo Route 25","जम्मू-कश्मीर","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["जम्मू-कश्मीर Demo Route 26","जम्मू-कश्मीर","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["जम्मू-कश्मीर Demo Route 27","जम्मू-कश्मीर","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["जम्मू-कश्मीर Demo Route 28","जम्मू-कश्मीर","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["जम्मू-कश्मीर Demo Route 29","जम्मू-कश्मीर","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["जम्मू-कश्मीर Demo Route 30","जम्मू-कश्मीर","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["जम्मू-कश्मीर Demo Route 31","जम्मू-कश्मीर","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["जम्मू-कश्मीर Demo Route 32","जम्मू-कश्मीर","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["जम्मू-कश्मीर Demo Route 33","जम्मू-कश्मीर","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["जम्मू-कश्मीर Demo Route 34","जम्मू-कश्मीर","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["जम्मू-कश्मीर Demo Route 35","जम्मू-कश्मीर","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["जम्मू-कश्मीर Demo Route 36","जम्मू-कश्मीर","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["जम्मू-कश्मीर Demo Route 37","जम्मू-कश्मीर","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["जम्मू-कश्मीर Demo Route 38","जम्मू-कश्मीर","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["जम्मू-कश्मीर Demo Route 39","जम्मू-कश्मीर","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["लद्दाख Demo Route 01","लद्दाख","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["लद्दाख Demo Route 02","लद्दाख","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["लद्दाख Demo Route 03","लद्दाख","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["लद्दाख Demo Route 04","लद्दाख","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["लद्दाख Demo Route 05","लद्दाख","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["लद्दाख Demo Route 06","लद्दाख","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["लद्दाख Demo Route 07","लद्दाख","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["लद्दाख Demo Route 08","लद्दाख","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["लद्दाख Demo Route 09","लद्दाख","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["लद्दाख Demo Route 10","लद्दाख","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["लद्दाख Demo Route 11","लद्दाख","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["लद्दाख Demo Route 12","लद्दाख","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["लद्दाख Demo Route 13","लद्दाख","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["लद्दाख Demo Route 14","लद्दाख","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["लद्दाख Demo Route 15","लद्दाख","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["लद्दाख Demo Route 16","लद्दाख","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["लद्दाख Demo Route 17","लद्दाख","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["लद्दाख Demo Route 18","लद्दाख","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["लद्दाख Demo Route 19","लद्दाख","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["लद्दाख Demo Route 20","लद्दाख","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["लद्दाख Demo Route 21","लद्दाख","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["लद्दाख Demo Route 22","लद्दाख","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["लद्दाख Demo Route 23","लद्दाख","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["लद्दाख Demo Route 24","लद्दाख","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["लद्दाख Demo Route 25","लद्दाख","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["लद्दाख Demo Route 26","लद्दाख","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["लद्दाख Demo Route 27","लद्दाख","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["लद्दाख Demo Route 28","लद्दाख","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["लद्दाख Demo Route 29","लद्दाख","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["लद्दाख Demo Route 30","लद्दाख","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["लद्दाख Demo Route 31","लद्दाख","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["लद्दाख Demo Route 32","लद्दाख","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["लद्दाख Demo Route 33","लद्दाख","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["लद्दाख Demo Route 34","लद्दाख","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["लद्दाख Demo Route 35","लद्दाख","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["लद्दाख Demo Route 36","लद्दाख","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["लद्दाख Demo Route 37","लद्दाख","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["लद्दाख Demo Route 38","लद्दाख","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["लद्दाख Demo Route 39","लद्दाख","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["सिक्किम Demo Route 01","सिक्किम","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["सिक्किम Demo Route 02","सिक्किम","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["सिक्किम Demo Route 03","सिक्किम","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["सिक्किम Demo Route 04","सिक्किम","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["सिक्किम Demo Route 05","सिक्किम","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["सिक्किम Demo Route 06","सिक्किम","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["सिक्किम Demo Route 07","सिक्किम","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["सिक्किम Demo Route 08","सिक्किम","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["सिक्किम Demo Route 09","सिक्किम","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["सिक्किम Demo Route 10","सिक्किम","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["सिक्किम Demo Route 11","सिक्किम","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["सिक्किम Demo Route 12","सिक्किम","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["सिक्किम Demo Route 13","सिक्किम","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["सिक्किम Demo Route 14","सिक्किम","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["सिक्किम Demo Route 15","सिक्किम","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["सिक्किम Demo Route 16","सिक्किम","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["सिक्किम Demo Route 17","सिक्किम","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["सिक्किम Demo Route 18","सिक्किम","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["सिक्किम Demo Route 19","सिक्किम","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["सिक्किम Demo Route 20","सिक्किम","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["सिक्किम Demo Route 21","सिक्किम","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["सिक्किम Demo Route 22","सिक्किम","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["सिक्किम Demo Route 23","सिक्किम","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["सिक्किम Demo Route 24","सिक्किम","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["सिक्किम Demo Route 25","सिक्किम","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["सिक्किम Demo Route 26","सिक्किम","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["सिक्किम Demo Route 27","सिक्किम","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["सिक्किम Demo Route 28","सिक्किम","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["सिक्किम Demo Route 29","सिक्किम","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["सिक्किम Demo Route 30","सिक्किम","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["सिक्किम Demo Route 31","सिक्किम","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["सिक्किम Demo Route 32","सिक्किम","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["सिक्किम Demo Route 33","सिक्किम","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["सिक्किम Demo Route 34","सिक्किम","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["सिक्किम Demo Route 35","सिक्किम","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["सिक्किम Demo Route 36","सिक्किम","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["सिक्किम Demo Route 37","सिक्किम","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["सिक्किम Demo Route 38","सिक्किम","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["सिक्किम Demo Route 39","सिक्किम","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["पश्चिम बंगाल Demo Route 01","पश्चिम बंगाल","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["पश्चिम बंगाल Demo Route 02","पश्चिम बंगाल","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["पश्चिम बंगाल Demo Route 03","पश्चिम बंगाल","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["पश्चिम बंगाल Demo Route 04","पश्चिम बंगाल","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["पश्चिम बंगाल Demo Route 05","पश्चिम बंगाल","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["पश्चिम बंगाल Demo Route 06","पश्चिम बंगाल","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["पश्चिम बंगाल Demo Route 07","पश्चिम बंगाल","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["पश्चिम बंगाल Demo Route 08","पश्चिम बंगाल","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["पश्चिम बंगाल Demo Route 09","पश्चिम बंगाल","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["पश्चिम बंगाल Demo Route 10","पश्चिम बंगाल","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["पश्चिम बंगाल Demo Route 11","पश्चिम बंगाल","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["पश्चिम बंगाल Demo Route 12","पश्चिम बंगाल","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["पश्चिम बंगाल Demo Route 13","पश्चिम बंगाल","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["पश्चिम बंगाल Demo Route 14","पश्चिम बंगाल","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["पश्चिम बंगाल Demo Route 15","पश्चिम बंगाल","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["पश्चिम बंगाल Demo Route 16","पश्चिम बंगाल","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["पश्चिम बंगाल Demo Route 17","पश्चिम बंगाल","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["पश्चिम बंगाल Demo Route 18","पश्चिम बंगाल","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["पश्चिम बंगाल Demo Route 19","पश्चिम बंगाल","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["पश्चिम बंगाल Demo Route 20","पश्चिम बंगाल","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["पश्चिम बंगाल Demo Route 21","पश्चिम बंगाल","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["पश्चिम बंगाल Demo Route 22","पश्चिम बंगाल","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["पश्चिम बंगाल Demo Route 23","पश्चिम बंगाल","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["पश्चिम बंगाल Demo Route 24","पश्चिम बंगाल","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["पश्चिम बंगाल Demo Route 25","पश्चिम बंगाल","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["पश्चिम बंगाल Demo Route 26","पश्चिम बंगाल","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["पश्चिम बंगाल Demo Route 27","पश्चिम बंगाल","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["पश्चिम बंगाल Demo Route 28","पश्चिम बंगाल","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["पश्चिम बंगाल Demo Route 29","पश्चिम बंगाल","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["पश्चिम बंगाल Demo Route 30","पश्चिम बंगाल","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["पश्चिम बंगाल Demo Route 31","पश्चिम बंगाल","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["पश्चिम बंगाल Demo Route 32","पश्चिम बंगाल","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["पश्चिम बंगाल Demo Route 33","पश्चिम बंगाल","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["पश्चिम बंगाल Demo Route 34","पश्चिम बंगाल","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["पश्चिम बंगाल Demo Route 35","पश्चिम बंगाल","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["पश्चिम बंगाल Demo Route 36","पश्चिम बंगाल","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["पश्चिम बंगाल Demo Route 37","पश्चिम बंगाल","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["पश्चिम बंगाल Demo Route 38","पश्चिम बंगाल","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["पश्चिम बंगाल Demo Route 39","पश्चिम बंगाल","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["महाराष्ट्र Demo Route 01","महाराष्ट्र","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["महाराष्ट्र Demo Route 02","महाराष्ट्र","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["महाराष्ट्र Demo Route 03","महाराष्ट्र","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["महाराष्ट्र Demo Route 04","महाराष्ट्र","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["महाराष्ट्र Demo Route 05","महाराष्ट्र","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["महाराष्ट्र Demo Route 06","महाराष्ट्र","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["महाराष्ट्र Demo Route 07","महाराष्ट्र","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["महाराष्ट्र Demo Route 08","महाराष्ट्र","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["महाराष्ट्र Demo Route 09","महाराष्ट्र","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["महाराष्ट्र Demo Route 10","महाराष्ट्र","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["महाराष्ट्र Demo Route 11","महाराष्ट्र","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["महाराष्ट्र Demo Route 12","महाराष्ट्र","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["महाराष्ट्र Demo Route 13","महाराष्ट्र","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["महाराष्ट्र Demo Route 14","महाराष्ट्र","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["महाराष्ट्र Demo Route 15","महाराष्ट्र","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["महाराष्ट्र Demo Route 16","महाराष्ट्र","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["महाराष्ट्र Demo Route 17","महाराष्ट्र","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["महाराष्ट्र Demo Route 18","महाराष्ट्र","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["महाराष्ट्र Demo Route 19","महाराष्ट्र","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["महाराष्ट्र Demo Route 20","महाराष्ट्र","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["महाराष्ट्र Demo Route 21","महाराष्ट्र","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["महाराष्ट्र Demo Route 22","महाराष्ट्र","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["महाराष्ट्र Demo Route 23","महाराष्ट्र","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["महाराष्ट्र Demo Route 24","महाराष्ट्र","कठिन","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["महाराष्ट्र Demo Route 25","महाराष्ट्र","आसान","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["महाराष्ट्र Demo Route 26","महाराष्ट्र","मध्यम","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["महाराष्ट्र Demo Route 27","महाराष्ट्र","कठिन","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["महाराष्ट्र Demo Route 28","महाराष्ट्र","आसान","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["महाराष्ट्र Demo Route 29","महाराष्ट्र","मध्यम","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["महाराष्ट्र Demo Route 30","महाराष्ट्र","कठिन","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["महाराष्ट्र Demo Route 31","महाराष्ट्र","आसान","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["महाराष्ट्र Demo Route 32","महाराष्ट्र","मध्यम","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["महाराष्ट्र Demo Route 33","महाराष्ट्र","कठिन","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"],
+["महाराष्ट्र Demo Route 34","महाराष्ट्र","आसान","3–4 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1454496522488-7a8e488e8606"],
+["महाराष्ट्र Demo Route 35","महाराष्ट्र","मध्यम","4–6 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1501785888041-af3ef285b470"],
+["महाराष्ट्र Demo Route 36","महाराष्ट्र","कठिन","5–7 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1441974231531-c6227db76b6e"],
+["महाराष्ट्र Demo Route 37","महाराष्ट्र","आसान","1 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1464822759023-fed622ff2c3b"],
+["महाराष्ट्र Demo Route 38","महाराष्ट्र","मध्यम","2 दिन","डेमो कार्ड — असली मार्ग और अनुमति की पुष्टि बाकी","photo-1470770841072-f978cf4d019e"]
+];
+const grid=document.getElementById("trekGrid");
+const search=document.getElementById("search");
+const region=document.getElementById("region");
+const difficulty=document.getElementById("difficulty");
+const bookingTrek=document.getElementById("bookingTrek");
+
+[...new Set(treks.map(t=>t[1]))].sort().forEach(r=>{
+ let o=document.createElement("option");o.value=r;o.textContent=r;region.appendChild(o);
+});
+treks.forEach(t=>{
+ let o=document.createElement("option");o.value=t[0];o.textContent=t[0];bookingTrek.appendChild(o);
+});
+const trekPrices = {
+  "चारधाम यात्रा": "दोनों विकल्प नीचे देखें",
+  "Kedarkantha": 19999,
+  "Kedarkantha": 19999,
+  "Dayara Bugyal": 19999,
+  "Kuari Pass": 11400,
+  "Har Ki Dun": 15500,
+  "Nag Tibba": 19999,
+  "Valley of Flowers": 19900,
+  "Gaumukh–Tapovan": 19990,
+  "Triund": 19999,
+  "Hampta Pass": 19999,
+  "Bhrigu Lake": 19999,
+  "Beas Kund": 25999,
+  "Kashmir Great Lakes": 35500
+};
+
+function render(){
+ grid.replaceChildren();
+ treks.filter(t=>
+  t.join(" ").toLowerCase().includes(search.value.toLowerCase()) &&
+  (!region.value||t[1]===region.value) &&
+  (!difficulty.value||t[2]===difficulty.value)
+ ).forEach(t=>{
+  const card=document.createElement("article");card.className="card";
+  const img=document.createElement(t[0] === "चारधाम यात्रा" ? "div" : "img");
+  if (t[0] === "चारधाम यात्रा") {
+    img.style.cssText = "display:grid;grid-template-columns:1fr 1fr;grid-template-rows:110px 110px;gap:3px;overflow:hidden;";
+    const temples = [
+      ["https://commons.wikimedia.org/wiki/Special:FilePath/Yamunotri_Temple.jpg", "यमुनोत्री धाम"],
+      ["https://commons.wikimedia.org/wiki/Special:FilePath/Gangotri_temple.jpg", "गंगोत्री धाम"],
+      ["https://commons.wikimedia.org/wiki/Special:FilePath/Kedarnath_Temple.jpg", "केदारनाथ धाम"],
+      ["https://commons.wikimedia.org/wiki/Special:FilePath/Holy_Badrinath_Temple.jpg", "बद्रीनाथ धाम"]
+    ];
+    temples.forEach(([src, label]) => {
+      const photo = document.createElement("img");
+      photo.src = src;
+      photo.alt = label;
+      photo.loading = "lazy";
+      photo.style.cssText = "width:100%;height:110px;object-fit:cover;display:block;";
+      img.appendChild(photo);
+    });
+  } else {
+    img.loading="lazy";
+    img.src=t[5].startsWith("http")?t[5]:"https://images.unsplash.com/"+t[5]+"?auto=format&fit=crop&w=700&q=80";
+    img.alt=t[0]+" landscape";
+img.onerror=function(){
+  if(!this.dataset.fallback){
+    this.dataset.fallback="1";
+    this.src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=80";
+  }
+};
+  }
+  const content=document.createElement("div");content.className="card-content";
+  const h=document.createElement("h3");h.textContent=t[0];
+  const p=document.createElement("p");p.textContent=t[1]+" • "+t[2]+" • "+t[3]+" — "+t[4];
+    const price=document.createElement("p");
+    price.className="trek-price";
+    if (t[0] === "चारधाम यात्रा") {
+    price.textContent = "सड़क मार्ग (10 दिन / 9 रात): ₹22,000–₹35,000 प्रति व्यक्ति (अनुमानित)\\nहेलीकॉप्टर (6 दिन / 5 रात): ₹1,95,000–₹2,26,000 प्रति व्यक्ति (अनुमानित)";
+    price.style.whiteSpace = "pre-line";
+  } else {
+    price.textContent = trekPrices[t[0]] !== undefined
+      ? (typeof trekPrices[t[0]] === "number"
+          ? "प्रति व्यक्ति: ₹"+trekPrices[t[0]].toLocaleString("en-IN")
+          : "प्रति व्यक्ति: "+trekPrices[t[0]]+" (अनुमानित)")
+      : "कीमत के लिए संपर्क करें";
+  }
+  const a=document.createElement("a");a.className="btn";a.target="_blank";a.rel="noopener";
+  a.href="https://wa.me/919259627461?text="+encodeURIComponent("Namaste HimalTrek, mujhe "+t[0]+" trek ki dates, cost, permits aur safety details chahiye.");
+  a.textContent="पैकेज पूछें";
+
+  const details=document.createElement("button");
+  details.type="button";
+  details.className="btn";
+  details.textContent="पूरी जानकारी देखें";
+  details.style.marginTop="8px";
+  details.addEventListener("click",()=>{
+    let panel=document.getElementById("trek-details-panel");
+    if(!panel){
+      panel=document.createElement("section");
+      panel.id="trek-details-panel";
+      panel.className="card";
+      panel.style.padding="20px";
+      panel.style.margin="20px 0";
+      grid.parentNode.insertBefore(panel,grid);
+    }
+    panel.replaceChildren();
+    const title=document.createElement("h2");
+    title.textContent=t[0]+" — पूरी जानकारी";
+    const info=document.createElement("p");
+    const trekLocations = {
+      "Kedarkantha":"उत्तराखंड — सांकरी गाँव, उत्तरकाशी",
+      "Dayara Bugyal":"उत्तराखंड — रैथल गाँव, उत्तरकाशी",
+      "Kuari Pass":"उत्तराखंड — जोशीमठ क्षेत्र, चमोली",
+      "Har Ki Dun":"उत्तराखंड — सांकरी क्षेत्र, उत्तरकाशी",
+      "Brahmatal":"उत्तराखंड — लोहाजुंग, चमोली",
+      "Nag Tibba":"उत्तराखंड — पंतवारी गाँव, टिहरी गढ़वाल",
+      "Chopta–Chandrashila":"उत्तराखंड — चोपता, रुद्रप्रयाग",
+      "Valley of Flowers":"उत्तराखंड — घांघरिया, चमोली",
+      "Pindari Glacier":"उत्तराखंड — खाती गाँव, बागेश्वर",
+      "Gaumukh–Tapovan":"उत्तराखंड — गंगोत्री, उत्तरकाशी",
+      "Triund":"हिमाचल प्रदेश — धर्मकोट / मैकलोडगंज, कांगड़ा",
+      "Hampta Pass":"हिमाचल प्रदेश — जोबरा, मनाली क्षेत्र",
+      "Bhrigu Lake":"हिमाचल प्रदेश — गुलाबा, मनाली क्षेत्र",
+      "Beas Kund":"हिमाचल प्रदेश — सोलंग घाटी, कुल्लू",
+      "Kheerganga":"हिमाचल प्रदेश — बरशैणी, कुल्लू",
+      "Indrahar Pass":"हिमाचल प्रदेश — मैकलोडगंज, कांगड़ा",
+      "Kashmir Great Lakes":"जम्मू-कश्मीर — सोनमर्ग क्षेत्र",
+      "Tarsar–Marsar":"जम्मू-कश्मीर — पहलगाम क्षेत्र",
+      "Markha Valley":"लद्दाख — लेह क्षेत्र",
+      "Sandakphu–Phalut":"पश्चिम बंगाल — मानेभंजन, दार्जिलिंग",
+      "Goechala":"सिक्किम — युक्सोम क्षेत्र",
+      "Dzongri":"सिक्किम — युक्सोम क्षेत्र",
+      "Kudremukh":"कर्नाटक — कुद्रेमुख क्षेत्र, चिक्कमगलूरु",
+      "Tadiandamol":"कर्नाटक — कक्काबे, कोडगु",
+      "Rajmachi":"महाराष्ट्र — लोणावला क्षेत्र",
+      "Harishchandragad":"महाराष्ट्र — खिरेश्वर गाँव",
+      "Chembra Peak":"केरल — मेप्पाडी, वायनाड"
+    };
+    const location = trekLocations[t[0]];
+    info.textContent = "क्षेत्र: "+t[1]+" | कठिनाई: "+t[2]+" | अवधि: "+t[3] +
+      (location ? "\nशुरुआती लोकेशन: "+location : "");
+    const description=document.createElement("p");
+    description.textContent=t[4];
+    const route=document.createElement("div");
+    route.style.whiteSpace="pre-line";
+    route.style.lineHeight="1.8";
+    route.style.margin="16px 0";
+    route.style.padding="14px";
+    route.style.borderRadius="12px";
+    route.style.background="var(--panel2, #17372a)";
+
+    const routeInfo = {
+      "Kedarkantha": "Kedarkantha Trek — 6 दिन का सामान्य कार्यक्रम\nशुरुआत: देहरादून, उत्तराखंड\nपहुँचने का आधार गाँव: सांकरी, उत्तरकाशी\nकुल पैदल ट्रेक: लगभग 20 किमी\nसड़क यात्रा: देहरादून से सांकरी लगभग 210 किमी; समय सड़क और मौसम पर निर्भर।\n\nदिन 1: देहरादून → सांकरी\nसड़क मार्ग से सांकरी पहुँचें। रात सांकरी में गेस्टहाउस/होमस्टे में।\n\nदिन 2: सांकरी → जुड़ा का तालाब\nलगभग 4 किमी पैदल चढ़ाई। रात निर्धारित कैंप में।\n\nदिन 3: जुड़ा का तालाब → केदारकंठा बेस कैंप\nलगभग 4 किमी पैदल। रात बेस कैंप में।\n\nदिन 4: बेस कैंप → केदारकंठा शिखर → हरगाँव कैंप\nसुबह जल्दी शिखर की ओर जाएँ। इस दिन लगभग 6 किमी का चुनौतीपूर्ण पैदल मार्ग हो सकता है। रात हरगाँव कैंप में।\n\nदिन 5: हरगाँव → जुड़ा का तालाब के रास्ते → सांकरी\nलगभग 6 किमी उतराई। रात सांकरी में।\n\nदिन 6: सांकरी → देहरादून\nसड़क मार्ग से देहरादून वापसी। यातायात और मौसम के कारण अतिरिक्त समय रखें।\n\nरात के ठहराव: सांकरी, जुड़ा का तालाब कैंप, बेस कैंप, हरगाँव कैंप और फिर सांकरी।\nमहत्वपूर्ण: यह उत्तराखंड पर्यटन की प्रकाशित योजना पर आधारित सामान्य उदाहरण है। कैंप, दूरी, परमिट, मौसम और रास्ते की स्थिति स्थानीय गाइड/ऑपरेटर से पुष्टि करें।",
+      "Dayara Bugyal": "देहरादून → रैथल (सड़क यात्रा)\nदिन 1: देहरादून → रैथल\nदिन 2: रैथल → गुई\nदिन 3: गुई → चिलापाड़ा\nदिन 4: चिलापाड़ा → Dayara Bugyal Top → निर्धारित कैंप\nदिन 5: कैंप → रैथल\nदिन 6: रैथल → देहरादून\nयह एक प्रकाशित 6-दिवसीय विकल्प है; छोटे पैकेज में योजना अलग हो सकती है।",
+      "Kuari Pass": "देहरादून → जोशीमठ क्षेत्र → कर्ची (सड़क यात्रा)\nदिन 1: देहरादून से जोशीमठ क्षेत्र\nदिन 2: कर्ची → अखरोटघेट्टा (लगभग 2.75 किमी)\nदिन 3: अखरोटघेट्टा → खुलारा (लगभग 2.5 किमी)\nदिन 4: खुलारा → Kuari Pass → ताली (प्रकाशित रूट लगभग 7.65 किमी)\nदिन 5: ताली → औली; फिर सड़क से वापसी (प्रकाशित पैदल भाग लगभग 8.1 किमी)\nनोट: सड़क यात्रा और ठहरने की व्यवस्था बुकिंग से पहले पुष्टि करें।",
+      "Brahmatal": "देहरादून → लोहाजुंग (सड़क यात्रा)\nदिन 1: देहरादून से लोहाजुंग; सड़क यात्रा और ठहराव की पुष्टि करें\nदिन 2: लोहाजुंग → गुजरेनी (लगभग 4.5 किमी)\nदिन 3: गुजरेनी → तिलांडी (लगभग 2.9 किमी)\nदिन 4: तिलांडी → ब्रह्मताल क्षेत्र, ब्रह्मताल टॉप होकर (लगभग 6 किमी)\nदिन 5: ब्रह्मताल → लोहाजुंग (लगभग 8.45 किमी)\nवापसी: लोहाजुंग से सड़क द्वारा देहरादून। वास्तविक पैकेज में दिन और कैंप बदल सकते हैं।",
+      "Nag Tibba": "देहरादून → पंतवारी गाँव (सड़क यात्रा)\\nदिन 1: पंतवारी से नाग टिब्बा ट्रेक मार्ग पर चढ़ाई; चुने गए पैकेज के अनुसार कैंप में रात रुकना।\\nदिन 2: कैंप से नाग टिब्बा शिखर और फिर पंतवारी वापसी।\\nशुरुआती समय, दूरी, कैंप और सड़क परिवहन बुकिंग से पहले स्थानीय गाइड से सत्यापित करें।",
+      "Har Ki Dun": "देहरादून → सांकरी क्षेत्र (सड़क यात्रा) → निर्धारित सड़क मार्ग से धातमीर/तालुका क्षेत्र\nपैदल मार्ग में गंगाड़, ओसला, सीमा और हर की दून घाटी जैसे पड़ाव शामिल हो सकते हैं।\nसटीक दिनवार दूरी, रात के पड़ाव और वापसी का मार्ग चुने गए ऑपरेटर से पुष्टि होने पर जोड़ा जाएगा।",
+      "चारधाम यात्रा": "चारधाम यात्रा — सड़क मार्ग से 10 दिन / 9 रात का सामान्य उदाहरण\n\nयात्रा शुरू और समाप्त: देहरादून\nयात्रा क्रम: यमुनोत्री → गंगोत्री → केदारनाथ → बद्रीनाथ\n\nदिन 1: देहरादून से बरकोट। रात बरकोट में।\nदिन 2: बरकोट से जानकीचट्टी सड़क मार्ग से। यहाँ से यमुनोत्री मंदिर तक लगभग 5–6 किमी पैदल एक तरफ। दर्शन के बाद बरकोट वापसी। रात बरकोट में।\nदिन 3: बरकोट से उत्तरकाशी सड़क मार्ग से। रात उत्तरकाशी में।\nदिन 4: उत्तरकाशी से गंगोत्री धाम जाएँ, दर्शन करें और उत्तरकाशी लौटें। रात उत्तरकाशी में।\nदिन 5: उत्तरकाशी से गुप्तकाशी सड़क मार्ग से। रात गुप्तकाशी में।\nदिन 6: गुप्तकाशी से सोनप्रयाग/गौरीकुंड जाएँ और निर्धारित व्यवस्था से केदारनाथ की यात्रा करें। पैदल मार्ग लगभग 16–18 किमी एक तरफ हो सकता है। रात केदारनाथ में।\nदिन 7: केदारनाथ से गौरीकुंड उतरकर गुप्तकाशी लौटें। रात गुप्तकाशी में।\nदिन 8: गुप्तकाशी से बद्रीनाथ सड़क मार्ग से। रात बद्रीनाथ में।\nदिन 9: बद्रीनाथ मंदिर के दर्शन करें। समय और स्थानीय नियम अनुमति दें तो माणा गाँव भी जा सकते हैं। रात बद्रीनाथ में।\nदिन 10: बद्रीनाथ से देहरादून सड़क मार्ग से वापसी। लंबी यात्रा और संभावित देरी के लिए अतिरिक्त समय रखें।\n\nमहत्वपूर्ण: यह सामान्य उदाहरण है, निश्चित बुकिंग कार्यक्रम नहीं। सड़क, मौसम, मंदिरों के खुलने की तारीख, पंजीकरण, ठहरने और यात्रा समय की पुष्टि पहले करें। पैदल मार्ग, परिवहन और रुकने के स्थान ऑपरेटर के अनुसार बदल सकते हैं। हेलीकॉप्टर पैकेज का कार्यक्रम अलग होता है।"
+    };
+
+    if (t[0].includes("Demo Route")) {
+      route.textContent = "यह डेमो कार्ड है, सत्यापित वास्तविक ट्रेक नहीं। इसे बुकिंग के लिए उपयोग न करें।";
+    } else if (routeInfo[t[0]]) {
+      route.textContent = "देहरादून से रास्ता और दिनवार योजना\n\n" + routeInfo[t[0]];
+    } else {
+      route.textContent = "रूट की पुष्टि बाकी है\n\nइस ट्रेक का सही शुरुआती स्थान, देहरादून से सड़क मार्ग, दिनवार पैदल रास्ता, दूरी, कैंप और वापसी का रूट सत्यापित होने के बाद प्रकाशित किया जाएगा। अभी इस विवरण को अंतिम यात्रा योजना न मानें।";
+    }
+
+    const note=document.createElement("p");
+    note.textContent="शुरुआती स्थान, दिनवार योजना, कैंप, भोजन, परमिट और परिवहन की जानकारी बुकिंग से पहले HimalTrek से सत्यापित करें।";
+
+    const cost=document.createElement("p");
+    const rawPrice=trekPrices[t[0]];
+    const paymentBox=document.createElement("div");
+    paymentBox.style.cssText="margin:14px 0;padding:14px;border:1px solid var(--line,#315342);border-radius:12px;";
+    const paymentTitle=document.createElement("h3");
+    paymentTitle.textContent="50% Advance Payment";
+    const paymentNote=document.createElement("p");
+    paymentNote.textContent="बुकिंग और अंतिम कीमत HimalTrek से पुष्टि करने के बाद ही भुगतान करें।";
+    const paymentStatus=document.createElement("p");
+    const qrArea=document.createElement("div");
+    const upiId="9259627461@axl";
+
+    function showPaymentQR(fullPrice, packageName) {
+      const amount=Math.round(fullPrice*50)/100;
+      if (!Number.isFinite(amount) || amount<=0) {
+        paymentStatus.textContent="कृपया सही पैकेज कीमत दर्ज करें।";
+        return;
+      }
+      const upiUrl="upi://pay?pa="+encodeURIComponent(upiId)
+        +"&pn="+encodeURIComponent("HimalTrek")
+        +"&am="+amount.toFixed(2)
+        +"&cu=INR"
+        +"&tn="+encodeURIComponent(packageName+" - 50% advance");
+      qrArea.replaceChildren();
+
+      const amountText=document.createElement("p");
+      amountText.textContent="50% अग्रिम राशि: ₹"+amount.toLocaleString("en-IN");
+      const qr=document.createElement("img");
+      qr.alt="UPI payment QR code";
+      qr.loading="lazy";
+      qr.style.cssText="width:220px;max-width:100%;height:auto;background:white;padding:8px;border-radius:8px;";
+      qr.src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data="+encodeURIComponent(upiUrl);
+
+      const payLink=document.createElement("a");
+      payLink.href=upiUrl;
+      payLink.textContent="UPI ऐप से भुगतान करें";
+      payLink.className="btn";
+      payLink.style.display="inline-block";
+      payLink.style.margin="8px 0";
+
+      const warning=document.createElement("p");
+      warning.textContent="भुगतान के बाद अपने UPI ऐप में सफल लेन-देन जाँचें। QR बनना या बटन दबाना भुगतान की पुष्टि नहीं है।";
+      qrArea.append(amountText,qr,payLink,warning);
+      paymentStatus.textContent="";
+
+      const qrError=()=>{paymentStatus.textContent="QR लोड नहीं हुआ तो UPI ऐप वाला बटन इस्तेमाल करें।";};
+      qr.addEventListener("error",qrError);
+    }
+
+    if (typeof rawPrice==="number") {
+      cost.textContent="दिखाई गई कीमत: ₹"+rawPrice.toLocaleString("en-IN")+" प्रति व्यक्ति (बुकिंग से पहले पुष्टि करें)";
+      const showButton=document.createElement("button");
+      showButton.type="button";
+      showButton.className="btn";
+      showButton.textContent="50% Advance QR दिखाएँ";
+      showButton.addEventListener("click",()=>showPaymentQR(rawPrice,t[0]));
+      paymentBox.append(paymentTitle,paymentNote,showButton,paymentStatus,qrArea);
+    } else if (t[0]==="चारधाम यात्रा") {
+      cost.textContent="सड़क और हेलीकॉप्टर पैकेज की अंतिम कीमत पुष्टि के बाद दर्ज करें।";
+      const packageSelect=document.createElement("select");
+      packageSelect.style.cssText="display:block;width:100%;padding:10px;margin:8px 0;";
+      [
+        ["","पैकेज चुनें"],
+        ["road","सड़क मार्ग पैकेज"],
+        ["helicopter","हेलीकॉप्टर पैकेज"]
+      ].forEach(([value,label])=>{
+        const option=document.createElement("option");
+        option.value=value;
+        option.textContent=label;
+        packageSelect.appendChild(option);
+      });
+      const priceInput=document.createElement("input");
+      priceInput.type="number";
+      priceInput.min="1";
+      priceInput.step="1";
+      priceInput.placeholder="पुष्टि की गई पूरी कीमत (₹)";
+      priceInput.style.cssText="display:block;width:100%;padding:10px;margin:8px 0;box-sizing:border-box;";
+      const showButton=document.createElement("button");
+      showButton.type="button";
+      showButton.className="btn";
+      showButton.textContent="50% Advance QR दिखाएँ";
+      showButton.addEventListener("click",()=>{
+        const fullPrice=Number(priceInput.value);
+        if (!packageSelect.value || !priceInput.value || !Number.isFinite(fullPrice) || fullPrice<=0) {
+          paymentStatus.textContent="पहले पैकेज चुनें और पुष्टि की गई पूरी कीमत दर्ज करें।";
+          return;
+        }
+        showPaymentQR(fullPrice,"चारधाम यात्रा - "+packageSelect.options[packageSelect.selectedIndex].text);
+      });
+      paymentBox.append(paymentTitle,paymentNote,packageSelect,priceInput,showButton,paymentStatus,qrArea);
+    } else {
+      cost.textContent="कीमत के लिए संपर्क करें।";
+      paymentBox.append(paymentTitle,paymentNote);
+    }
+    const book=document.createElement("a");
+    book.className="btn";
+    book.href="https://wa.me/919259627461?text="+encodeURIComponent("Namaste HimalTrek, mujhe "+t[0]+" trek ki poori details chahiye.");
+    book.target="_blank";
+    book.rel="noopener";
+    book.textContent="WhatsApp पर जानकारी लें";
+    const close=document.createElement("button");
+    close.type="button";
+    close.className="btn";
+    close.textContent="बंद करें";
+    close.style.marginLeft="8px";
+    close.addEventListener("click",()=>panel.remove());
+    panel.append(title,info,description,route,cost,paymentBox,note,book,close);
+    panel.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+
+  content.append(h,p,price,a,details);
+  card.append(img,content);
+  grid.append(card);
+ });
+}
+[search,region,difficulty].forEach(el=>el.addEventListener("input",render));
+render();
+document.getElementById("booking").addEventListener("submit",function(e){
+ e.preventDefault();
+ const d=new FormData(this);
+ const msg="HimalTrek enquiry\nName: "+d.get("name")+"\nPhone: "+d.get("phone")+"\nTrek: "+d.get("trek")+"\nDate: "+d.get("date")+"\nPeople: "+d.get("people")+"\nMessage: "+d.get("message");
+ window.open("https://wa.me/919259627461?text="+encodeURIComponent(msg),"_blank");
+});
+</script>
+
+<div style="background: #ffffff; padding: 30px 5%; color: #2d3748; margin: 20px auto; max-width: 1000px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+  <h2 style="color: #247447; text-align: center; margin-bottom: 25px; font-size: 24px;">🏔️ उत्तराखंड और हिमाचल प्रदेश के संपूर्ण ट्रेक</h2>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+
+    <!-- Uttarakhand -->
+    <div>
+      <h3 style="color: #205f3b; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 15px;">उत्तराखंड के ट्रेक</h3>
+      <ul style="line-height: 1.8; font-size: 14px; padding-left: 20px;">
+        <li><b>Kedarkantha Trek</b> (₹6,500) <a href="https://wa.me/919259627461?text=नमस्ते,%20मुझे%20Kedarkantha%20ट्रेक%20की%20जानकारी%20चाहिए।" target="_blank" style="color: #25d366; font-weight: bold;">[WhatsApp]</a></li>
+        <li><b>Brahmatal Trek</b> (₹7,500) <a href="https://wa.me/919259627461?text=नमस्ते,%20मुझे%20Brahmatal%20ट्रेक%20की%20जानकारी%20चाहिए।" target="_blank" style="color: #25d366; font-weight: bold;">[WhatsApp]</a></li>
+        <li><b>Har Ki Dun Trek</b> (₹14,500) <a href="https://wa.me/919259627461?text=नमस्ते,%20मुझे%20Har%20Ki%20Dun%20ट्रेक%20की%20जानकारी%20चाहिए।" target="_blank" style="color: #25d366; font-weight: bold;">[WhatsApp]</a></li>
+        <li><b>Bali Pass Trek</b> (₹21,500) <a href="https://wa.me/919259627461?text=नमस्ते,%20मुझे%20Bali%20Pass%20ट्रेक%20की%20जानकारी%20चाहिए।" target="_blank" style="color: #25d366; font-weight: bold;">[WhatsApp]</a></li>
+        <li>Rupin Pass Trek</li>
+        <li>Auden's Col Trek</li>
+        <li>Pindari Glacier Trek</li>
+        <li>Kafni Glacier Trek</li>
+        <li>Satopanth Lake Trek</li>
+        <li>Dodital–Darwa Pass Trek</li>
+        <li>Pangarchulla Peak Trek</li>
+        <li>Kartik Swami Trek</li>
+        <li>Gaumukh–Tapovan Trek</li>
+      </ul>
+    </div>
+
+    <!-- Himachal Pradesh -->
+    <div>
+      <h3 style="color: #205f3b; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 15px;">हिमाचल प्रदेश के ट्रेक</h3>
+      <ul style="line-height: 1.8; font-size: 14px; padding-left: 20px;">
+        <li>Triund Trek</li>
+        <li><b>Hampta Pass Trek</b> (₹9,500) <a href="https://wa.me/919259627461?text=नमस्ते,%20मुझे%20Hampta%20Pass%20ट्रेक%20की%20जानकारी%20चाहिए।" target="_blank" style="color: #25d366; font-weight: bold;">[WhatsApp]</a></li>
+        <li><b>Bhrigu Lake Trek</b> (₹7,999) <a href="https://wa.me/919259627461?text=नमस्ते,%20मुझे%20Bhrigu%20Lake%20ट्रेक%20की%20जानकारी%20चाहिए।" target="_blank" style="color: #25d366; font-weight: bold;">[WhatsApp]</a></li>
+        <li><b>Beas Kund Trek</b> (₹5,500) <a href="https://wa.me/919259627461?text=नमस्ते,%20मुझे%20Beas%20Kund%20ट्रेक%20की%20जानकारी%20चाहिए।" target="_blank" style="color: #25d366; font-weight: bold;">[WhatsApp]</a></li>
+        <li><b>Kheerganga Trek</b> (₹4,500) <a href="https://wa.me/919259627461?text=नमस्ते,%20मुझे%20Kheerganga%20ट्रेक%20की%20जानकारी%20चाहिए।" target="_blank" style="color: #25d366; font-weight: bold;">[WhatsApp]</a></li>
+        <li>Prashar Lake Trek</li>
+        <li>Kareri Lake Trek</li>
+        <li>Indrahar Pass Trek</li>
+        <li>Pin Parvati Pass Trek</li>
+        <li>Chandrakhani Pass Trek</li>
+        <li>Sar Pass Trek</li>
+        <li>Tosh Valley Trek</li>
+        <li>Deo Tibba Base Camp Trek</li>
+        <li>Friendship Peak Approach Trek</li>
+        <li>Chandratal Trek</li>
+        <li>Lamadugh Trek</li>
+        <li>Shali Tibba Trek</li>
+        <li>Patalsu Peak Trek</li>
+        <li>Jalsu Pass Trek</li>
+        <li>Kugti Pass Trek</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<script>function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:"hi",includedLanguages:"as,bn,en,gu,hi,kn,ml,mr,ne,or,pa,sa,sd,ta,te,ur",layout:google.translate.TranslateElement.InlineLayout.SIMPLE},"google_translate_element");}</script><script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<nav class="ht-mobile-bottom-nav" aria-label="मुख्य मेनू"><a href="#top"><span>⌂</span>होम</a><a href="#treks"><span>🏔</span>ट्रेक</a><a href="#booking"><span>▣</span>बुकिंग</a><a href="#gallery"><span>▧</span>गैलरी</a><a href="#contact"><span>☎</span>संपर्क</a></nav>
+
+<script>
+/* HIMALTREK_AUTO_HERO_SLIDER */
+(function () {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  const photos = [
+    'himaltrek-design.png',
+    'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=85',
+    'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1800&q=85',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1800&q=85'
+  ];
+
+  let current = 0;
+
+  photos.forEach(function (src) {
+    const image = new Image();
+    image.src = src;
+  });
+
+  function showPhoto() {
+    hero.style.backgroundImage =
+      "linear-gradient(90deg,rgba(3,17,11,.82),rgba(3,17,11,.28)),url('" +
+      photos[current] + "')";
+    current = (current + 1) % photos.length;
+  }
+
+  showPhoto();
+  window.setInterval(showPhoto, 5000);
+})();
+</script>
+
+
+<!-- HIMALTREK_GALLERY_LIGHTBOX -->
+<style>
+#htPhotoViewer{display:none;position:fixed;inset:0;z-index:20000;background:rgba(0,0,0,.94);align-items:center;justify-content:center;padding:18px}
+#htPhotoViewer.ht-open{display:flex}
+#htPhotoViewer img{max-width:95%;max-height:85vh;object-fit:contain;border-radius:12px}
+#htPhotoClose{position:absolute;top:14px;right:18px;background:#b9f27c;color:#071710;border:0;border-radius:50%;width:44px;height:44px;font-size:28px;cursor:pointer}
+#htPhotoCaption{position:absolute;bottom:12px;color:white;text-align:center;font-size:14px}
+</style>
+<div id="htPhotoViewer" role="dialog" aria-modal="true" aria-label="Photo viewer">
+<button id="htPhotoClose" type="button" aria-label="फोटो बंद करें">×</button>
+<img id="htPhotoLarge" alt="">
+<div id="htPhotoCaption"></div>
+</div>
+<script>
+(function(){
+const box=document.getElementById('htPhotoViewer');
+const large=document.getElementById('htPhotoLarge');
+const caption=document.getElementById('htPhotoCaption');
+function closePhoto(){box.classList.remove('ht-open');large.removeAttribute('src');}
+document.querySelectorAll('#gallery .gallery img').forEach(function(img){
+img.tabIndex=0;
+img.addEventListener('click',function(){
+large.src=img.currentSrc||img.src;
+large.alt=img.alt||'HimalTrek mountain photo';
+caption.textContent=img.alt||'HimalTrek Photo Gallery';
+box.classList.add('ht-open');
+});
+img.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();img.click();}});
+});
+document.getElementById('htPhotoClose').addEventListener('click',closePhoto);
+box.addEventListener('click',function(e){if(e.target===box)closePhoto();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closePhoto();});
+})();
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyBG2viSN7SQ_m7JmiYcAeFs4luYcLzf80E",
+  authDomain: "himaltrek-4050e.firebaseapp.com",
+  projectId: "himaltrek-4050e",
+  storageBucket: "himaltrek-4050e.firebasestorage.app",
+  messagingSenderId: "383405692149",
+  appId: "1:383405692149:web:7e86969965978896e0e1bc"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const loginForm = document.getElementById("himalLoginForm");
+const signupBtn = document.getElementById("himalSignupBtn");
+const logoutBtn = document.getElementById("himalLogoutBtn");
+const authMessage = document.getElementById("himalAuthMessage");
+
+if (loginForm && signupBtn && logoutBtn && authMessage) {
+  loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    authMessage.textContent = "Logging in...";
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        document.getElementById("himalEmail").value.trim(),
+        document.getElementById("himalPassword").value
+      );
+      authMessage.textContent = "Login successful!";
+    } catch (error) {
+      authMessage.textContent = "Login failed: " + error.message;
+    }
+  });
+
+  signupBtn.addEventListener("click", async () => {
+    authMessage.textContent = "Creating account...";
+    try {
+      await createUserWithEmailAndPassword(
+        auth,
+        document.getElementById("himalEmail").value.trim(),
+        document.getElementById("himalPassword").value
+      );
+      authMessage.textContent = "Account created successfully!";
+    } catch (error) {
+      authMessage.textContent = "Signup failed: " + error.message;
+    }
+  });
+
+  logoutBtn.addEventListener("click", async () => {
+    try {
+      await signOut(auth);
+      authMessage.textContent = "You are logged out.";
+    } catch (error) {
+      authMessage.textContent = "Logout failed: " + error.message;
+    }
+  });
+
+  onAuthStateChanged(auth, (user) => {
+    logoutBtn.hidden = !user;
+    authMessage.textContent = user
+      ? "Logged in as " + user.email
+      : "Login या नया account बनाएँ।";
+  });
+}
+
+window.himalTrekFirebase = { app, auth, db };
+</script>
 </body>
 </html>
+
